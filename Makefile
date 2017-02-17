@@ -8,6 +8,7 @@ THE_PROGRAM	=  do_toggle
 TARGET_SYSTEM	?= ${DEFAULT_SYSTEM}
 ifeq (rpi, ${TARGET_SYSTEM})
 MAKE_TARGET	=  deploy
+DEPLOY_COMMAND	?= scp ${THE_PROGRAM} pet-piercer.local:
 EXT_TREES_ROOT	?= ${HOME}/Documents/trees
 NETBSDSRCDIR	?= ${EXT_TREES_ROOT}/netbsd-src
 CROSS_ROOT	?= ${EXT_TREES_ROOT}/rpi
@@ -48,12 +49,12 @@ clean:
 	${SILENT}rm -rf *.dSYM *.gcda *.gcno *.gcov
 
 deploy: ${THE_PROGRAM}
-	${SILENT}scp ${THE_PROGRAM} pet-piercer.local:
+	${SILENT}${DEPLOY_COMMAND}
 
 .PHONY: all check clean deploy
 
-${THE_TESTS}: ${THE_PROGRAM} .has_check ${THE_LIBRARY} check_toggle.c check_toggle_acceptance.c check_toggle_unit.c
-	${SILENT}${CC} ${CFLAGS} ${CHECK_CFLAGS} -o ${THE_TESTS} check_toggle_acceptance.c check_toggle_unit.c check_toggle.c ${CHECK_LIBS} ${TEST_LIBS} ${THE_LIBRARY}
+${THE_TESTS}: ${THE_PROGRAM} .has_check ${THE_LIBRARY} check_toggle.c acceptance.c unit.c
+	${SILENT}${CC} ${CFLAGS} ${CHECK_CFLAGS} -o ${THE_TESTS} acceptance.c unit.c check_toggle.c ${CHECK_LIBS} ${TEST_LIBS} ${THE_LIBRARY}
 
 ${THE_LIBRARY}: led.h led.c syscalls.h ${TARGET_SYSTEM}_syscalls.h ${TARGET_SYSTEM}_syscalls.c
 	${SILENT}${CC} ${CFLAGS} -c led.c

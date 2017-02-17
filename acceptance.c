@@ -2,14 +2,14 @@
 
 #include "led.h"
 
-START_TEST(test_acceptance_nothing) {
-    ck_assert_int_eq(1, 2);
+START_TEST(test_public_interface) {
+    led_toggle();
 } END_TEST
 
 TCase* tcase_acceptance(void) {
     TCase *tc = tcase_create("Acceptance Tests");
 
-    tcase_add_test(tc, test_acceptance_nothing);
+    tcase_add_test(tc, test_public_interface);
 
     return tc;
 }
