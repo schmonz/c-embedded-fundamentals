@@ -1,4 +1,10 @@
+#include <stdio.h>
+
+#include "led.h"
+
 int main(void)
 {
-    return 5;
+    toggle_led();
+    fprintf(stderr, "just called toggle_led();\n");
+    return 0;
 }
