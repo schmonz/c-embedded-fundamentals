@@ -101,7 +101,7 @@ Here's one possible path through solving the problem.
 12. Test that we call `ioctl()` with 2nd arg `GPIOTOGGLE`
 13. Test that we call `ioctl()` with 3rd arg (`struct gpio_req`) specifying pin 16
 14. Test that if `ioctl()` fails, we do still call `close()`
-    1. So now really call both
+    - So now really call both
 15. Let's pretend deploying is expensive, and test our tests a little first
 16. Test that if the first `led_toggle()` has a failure and the second
     `led_toggle()` succeeds, we call all three system calls the right
