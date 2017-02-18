@@ -3,7 +3,7 @@
 #include "led.h"
 
 START_TEST(test_acceptance_nothing) {
-    ck_assert_int_eq(1, 2);
+    ck_assert_int_eq(2, 2);
 } END_TEST
 
 TCase* tcase_acceptance(void) {

@@ -4,7 +4,7 @@
 #include "syscalls.h"
 
 START_TEST(test_unit_nothing) {
-    ck_assert_int_eq(2, 3);
+    ck_assert_int_eq(3, 3);
 } END_TEST
 
 void setup(void) {
