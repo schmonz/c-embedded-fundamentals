@@ -4,7 +4,9 @@
 #include "syscalls.h"
 
 START_TEST(test_unit_nothing) {
-    ck_assert_int_eq(3, 3);
+    toggle_led();
+    ck_assert_int_eq(1, get_num_mock_open_calls());
+    ck_assert_str_eq("/dev/gpio0", get_last_mock_open_path()); 
 } END_TEST
 
 void setup(void) {
