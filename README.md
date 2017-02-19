@@ -112,6 +112,8 @@ Here's one possible path through solving the problem.
 
 ## What You Can Do Next
 
-- Raspberry Pis are cheap
-- NetBSD is a free, open source OS that wants to give you a cross compiler
-- Keep playing and having fun!
+1. [Install NetBSD 7 on Raspberry Pi](https://wiki.netbsd.org/ports/evbarm/raspberry_pi/)
+2. [Fetch the NetBSD source tree](https://www.netbsd.org/docs/guide/en/chap-fetch.html) (or [let the `Makefile` do it for you](https://github.com/schmonz/c-embedded-fundamentals/blob/9bdd1d2d8839a6a65523c4cdbef68e9f3705707e/Makefile#L37))
+3. [Build the cross compiler and a complete NetBSD for the target system](https://www.netbsd.org/docs/guide/en/chap-build.html) (or [let the `Makefile` do it for you](https://github.com/schmonz/c-embedded-fundamentals/blob/9bdd1d2d8839a6a65523c4cdbef68e9f3705707e/Makefile#L40))
+4. Test-drive it following the steps above (or follow your own path).
+5. Keep playing and having fun!
