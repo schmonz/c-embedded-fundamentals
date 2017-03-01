@@ -4,7 +4,10 @@
 #include "syscalls.h"
 
 START_TEST(it_opens_gpio_device_for_write) {
-    mock_open_fake_return_value(37);
+    int file_descriptor = 37;
+    int LED_PIN = 16;
+
+    mock_open_fake_return_value(file_descriptor);
 
     ck_assert_int_eq(mock_open_spy_numcalls(), 0);
     ck_assert_str_eq(mock_open_spy_path(), "");
@@ -16,8 +19,13 @@ START_TEST(it_opens_gpio_device_for_write) {
     ck_assert_str_eq(mock_open_spy_path(), "/dev/gpio0");
     ck_assert_int_eq(mock_open_spy_oflag(), O_WRONLY);
 
+    ck_assert_int_eq(mock_ioctl_spy_numcalls(), 1);
+    ck_assert_int_eq(mock_ioctl_spy_fd(), file_descriptor);
+    ck_assert_int_eq(mock_ioctl_spy_request(), GPIOTOGGLE);
+    ck_assert_int_eq(mock_ioctl_spy_pin(), LED_PIN);
+
     ck_assert_int_eq(mock_close_spy_numcalls(), 1);
-    ck_assert_int_eq(mock_close_spy_fd(), 37);
+    ck_assert_int_eq(mock_close_spy_fd(), file_descriptor);
 } END_TEST
 
 START_TEST(it_stops_if_open_fails) {
