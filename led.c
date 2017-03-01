@@ -1,5 +1,6 @@
 #include "syscalls.h"
 
 void led_toggle() {
-    open("/dev/gpio0", O_WRONLY);
+    int fd = open("/dev/gpio0", O_WRONLY);
+    close(fd);
 }
