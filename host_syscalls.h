@@ -10,7 +10,9 @@ int mock_open_spy_oflag(void);
 int ioctl(int, unsigned long, void *);
 #define GPIOTOGGLE 66
 struct gpio_req {
+    char gp_name[64];
     int gp_pin;
+    int gp_value;
 };
 void mock_ioctl_fake_return_value(int);
 int mock_ioctl_spy_numcalls(void);

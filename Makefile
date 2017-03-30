@@ -27,7 +27,7 @@ LD		= ${TOOLDIR}/bin/${TARGET_PREFIX}ld
 AR		= ${TOOLDIR}/bin/${TARGET_PREFIX}ar
 RANLIB		= ${TOOLDIR}/bin/${TARGET_PREFIX}ranlib
 
-CFLAGS		+= -g -O0 -Wall -Werror -Wextra -std=c99
+CFLAGS		+= -g -O0 -Wall -Werror -Wextra -std=c99 -Wmissing-field-initializers
 CHECK_CFLAGS	:= $(shell pkg-config --cflags check 2>/dev/null)
 CHECK_LIBS	:= $(shell pkg-config --libs check 2>/dev/null)
 TEST_LIBS	+= -lm
